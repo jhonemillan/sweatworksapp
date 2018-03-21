@@ -1,0 +1,24 @@
+{
+  "name": "sweatworksapp",
+  "version": "1.0.0",
+  "description": "App that consumes sweatworks api, Node.js, Sequelize, Sqlite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhonemillan/sweatworksapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhonemillan/sweatworksapp/issues"
+  },
+  "homepage": "https://github.com/jhonemillan/sweatworksapp#readme",
+  "dependencies": {
+    "@angular/cdk": "^5.2.4",
+    "@angular/material": "^5.2.4"
+  }
+}

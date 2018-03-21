@@ -1,7 +1,7 @@
 export interface publicacion{
-    kpublicacion: number,
+    kPublicacion: number,
     kautor: number,
-    titulo: string,
-    mensaje: string,
-    datecreated: string
+    Titulo: string,
+    Mensaje: string,
+    DateCreated: string
 }

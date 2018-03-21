@@ -6,6 +6,7 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import { ResponseSearch } from '../model/response';
 
 @Injectable()
 export class DataService {
@@ -17,7 +18,7 @@ export class DataService {
     return this.http.get(this.domain + '/autor/all').map(res=> res.json()).catch(this.handleError);
   }
 
-  getPublicaciones(kAutor:number, page:number):any{
+  getPublicaciones(kAutor:number, page:number):Observable<ResponseSearch>{    
     return this.http.get(this.domain +`/publicacion/all/${kAutor}/${page}`).map(res=> res.json()).catch(this.handleError);
   }
 

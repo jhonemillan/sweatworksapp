@@ -1,3 +1,4 @@
+import { publicacion } from './model/publicacion';
 import { DataService } from './services/data.service';
 import { Observable } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
@@ -6,6 +7,8 @@ import {FormBuilder, FormGroup, Validators , ValidatorFn, AbstractControl, FormC
 import { catchError, map, tap,startWith, switchMap, 
          debounceTime, distinctUntilChanged, takeWhile, first } from 'rxjs/operators';
 import { autor } from './model/autor';
+import { ResponseSearch } from './model/response';
+import { and } from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -15,7 +18,15 @@ import { autor } from './model/autor';
 })
 export class AppComponent {
   autores: Observable<autor[]>
+  publicaciones: Observable<publicacion[]>
   autor = {} as autor;
+  pages: number;
+  currentPage = 1
+  objectData : ResponseSearch = {
+    count: 0,
+    pages: 0,
+    data: new Array()
+  };
 
   constructor(public data: DataService){}
 
@@ -27,10 +38,33 @@ export class AppComponent {
     this.autores = this.data.getAutores();   
   }
 
-  getPublicacionesByAutor(kAutor){
-    console.log(this.autor);
-    //var test = this.data.getPublicaciones(kAutor,1);
-    //console.log(test);
+  getPublicacionesByAutor(){    
+    this.data.getPublicaciones(this.autor.kAutor,this.currentPage).subscribe((data)=>{
+        this.objectData = data;      
+    });
+  }
+
+  changeAutor(value){
+    this.autor.kAutor = value;
+  }
+
+  navigatePrev(){
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+    this.getPublicacionesByAutor();
+  }
+
+  navigateNext(){    
+    if ((this.currentPage < this.objectData.pages) && this.objectData.pages > 1) {
+      this.currentPage++;
+    }
+    this.getPublicacionesByAutor();
+  }
+
+  buscar(){
+    this.currentPage = 1;
+    this.getPublicacionesByAutor();
   }
 
 }

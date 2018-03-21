@@ -2,19 +2,45 @@
 <mat-toolbar color="primary">    
     
   <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">    
-    
+    Sweat Works
   </div>
   
 </mat-toolbar>
-
+<br>
 <div class="container">
 
 <mat-form-field>
-  <mat-select placeholder="autores" [(ngModel)]="autor">
+  <mat-select placeholder="Autor" (change)="changeAutor($event.value)">
     <mat-option *ngFor="let autor of autores | async" [value]="autor.kAutor">
       {{ autor.Nombre }}
     </mat-option>
   </mat-select> 
 </mat-form-field>
 
+<mat-form-field class="full-width">
+  <input matInput placeholder="Titulo" name="busqueda">
+</mat-form-field>
+
+<button mat-button color="primary" (click)="buscar()">Buscar</button>
+
+<br>
+<br>
+<div class="card" *ngFor="let publicacion of objectData.data">
+    <h5 class="card-header">{{publicacion.Titulo}} - {{publicacion.DateCreated | date: 'medium'}}</h5>
+    <div class="card-body">
+      <h5 class="card-title">{{publicacion.Mensaje}}</h5>         
+    </div>
 </div>
+<br>
+<div class="row" *ngIf="objectData.pages > 0">
+    <div class="col-6 pull-right">
+      <button mat-icon-button color="success" (click)="navigatePrev()">
+          <mat-icon>navigate_before</mat-icon>
+      </button>
+    </div>
+    <div class="col-6 pull-right">
+        <button mat-icon-button color="success" (click)="navigateNext()">
+            <mat-icon>navigate_next</mat-icon>
+        </button>
+    </div>
+  </div>

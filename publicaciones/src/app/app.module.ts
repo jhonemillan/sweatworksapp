@@ -1,3 +1,4 @@
+import { DataService } from './services/data.service';
 import { AppRoutingModule } from './routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -76,7 +77,9 @@ import 'hammerjs'
     MatSnackBarModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

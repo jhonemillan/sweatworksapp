@@ -8,6 +8,13 @@
 </mat-toolbar>
 
 <div class="container">
-<br>  
+
+<mat-form-field>
+  <mat-select placeholder="autores" [(ngModel)]="autor">
+    <mat-option *ngFor="let autor of autores | async" [value]="autor.kAutor">
+      {{ autor.Nombre }}
+    </mat-option>
+  </mat-select> 
+</mat-form-field>
 
 </div>

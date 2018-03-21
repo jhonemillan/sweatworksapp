@@ -21,6 +21,7 @@ export class AppComponent {
   publicaciones: Observable<publicacion[]>
   autor = {} as autor;
   pages: number;
+  filterTitle = ""
   currentPage = 1
   objectData : ResponseSearch = {
     count: 0,
@@ -40,7 +41,14 @@ export class AppComponent {
 
   getPublicacionesByAutor(){    
     this.data.getPublicaciones(this.autor.kAutor,this.currentPage).subscribe((data)=>{
-        this.objectData = data;      
+        this.objectData = data;
+        
+        if (this.filterTitle != "") {
+          if (this.objectData.data.length > 0) {
+            var filtered = this.objectData.data.filter(post => post.Titulo.includes(this.filterTitle));
+            this.objectData.data = filtered;
+          }
+        }
     });
   }
 

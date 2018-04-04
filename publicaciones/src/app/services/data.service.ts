@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import { ResponseSearch } from '../model/response';
 
 @Injectable()
 export class DataService {
@@ -19,10 +20,4 @@ export class DataService {
   getPublicaciones(kAutor: number, page: number): any {
     return this.http.get(this.domain + `/publicacion/all/${kAutor}/${page}`);
   }
-
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
-
 }

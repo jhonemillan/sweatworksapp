@@ -1,11 +1,10 @@
 import { DataService } from './services/data.service';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { MatSelectChange } from "@angular/material";
+import { MatSelectChange } from '@angular/material';
 import {FormBuilder, FormGroup, Validators , ValidatorFn, AbstractControl, FormControl, ReactiveFormsModule} from '@angular/forms';
-import { catchError, map, tap,startWith, switchMap, 
-         debounceTime, distinctUntilChanged, takeWhile, first } from 'rxjs/operators';
-import { autor } from './model/autor';
+import { catchError, map, tap, startWith, switchMap, debounceTime, distinctUntilChanged, takeWhile, first } from 'rxjs/operators';
+import { Autor } from './model/autor';
 
 
 @Component({
@@ -14,23 +13,21 @@ import { autor } from './model/autor';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  autores: Observable<autor[]>
-  autor = {} as autor;
+  autores: Observable<Autor[]>;
+  autor = {} as Autor;
 
-  constructor(public data: DataService){}
+  constructor(public data: DataService) { }
 
-  ngOnInit(){
+  OnInit() {
     this.getAutores();
   }
 
-  getAutores(){   
-    this.autores = this.data.getAutores();   
+  getAutores() {
+    this.autores = this.data.getAutores();
   }
 
-  getPublicacionesByAutor(kAutor){
+  getPublicacionesByAutor(kAutor) {
     console.log(this.autor);
-    //var test = this.data.getPublicaciones(kAutor,1);
-    //console.log(test);
   }
 
 }

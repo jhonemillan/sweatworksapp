@@ -5,11 +5,11 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule, FormControl, NgControl} from '@angular/forms';
-import { Http, Headers, RequestOptions } from '@angular/http'
+import { Http, Headers, RequestOptions } from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
-import {HttpModule} from '@angular/http';
 
-import {  
+
+import {
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
@@ -44,7 +44,7 @@ import {
   MatFormFieldModule,
   MatAutocompleteModule
 } from '@angular/material';
-import 'hammerjs'
+import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -54,8 +54,7 @@ import 'hammerjs'
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HttpModule,
-    FormsModule,        
+    FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
     MatAutocompleteModule,

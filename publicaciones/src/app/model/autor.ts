@@ -1,6 +1,6 @@
-export interface autor{
-    kAutor: number,
-    Nombre: string,
-    Email: string,
-    FechaNacimiento: string
+export interface Autor {
+    kAutor: number;
+    Nombre: string;
+    Email: string;
+    FechaNacimiento: string;
 }

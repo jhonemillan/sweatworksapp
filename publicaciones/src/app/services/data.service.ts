@@ -18,6 +18,7 @@ export class DataService {
   }
 
   getPublicaciones(kAutor: number, page: number): any {
+    console.log('entra');
     return this.http.get(this.domain + `/publicacion/all/${kAutor}/${page}`);
   }
 }

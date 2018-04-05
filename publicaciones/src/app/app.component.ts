@@ -30,7 +30,9 @@ export class AppComponent {
 
   constructor(public data: DataService) { }
 
-  OnInit() {
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnInit() {
+    console.log('autores');
     this.getAutores();
   }
 
@@ -39,6 +41,7 @@ export class AppComponent {
   }
 
   getPublicacionesByAutor() {
+    console.log('data');
     this.data.getPublicaciones(this.autor.kAutor, this.currentPage).subscribe((data) => {
         this.objectData = data;
 
